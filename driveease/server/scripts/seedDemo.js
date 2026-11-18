@@ -191,7 +191,9 @@ async function run() {
   await disconnectDB();
 }
 
-run().catch(async (err) => {
+run()
+  .then(() => process.exit(0))
+  .catch(async (err) => {
   console.error(`✖ ${err.message}`);
   await disconnectDB().catch(() => {});
   process.exit(1);
